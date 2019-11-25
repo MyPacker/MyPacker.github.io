@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="/images/me.jpg"/>
+	<link rel="shortcut icon" href="/images/me.jpg">
+	
+			    <title>
+    满园的空间
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <meta name="keywords" content="He Manyuan" />
+    
+    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: ' ';
+          position: fixed;
+          top: 0;
+          background: url('/img/bg.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover; 
+        }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+</head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">He Manyuan</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/" rel="nofollow">主页</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://ftp.bmp.ovh/imgs/2019/11/499bb2e4affc6dc9.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >next.js下css-module和组件的import样式共存的配置方法</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <p>Next.js 是一个轻量级的 React 服务端渲染应用框架。还是头一回用这种服务端渲染的框架，之所以会做服务端渲染，是因为这个项目是一个纯展示性的品牌官网，所以需要为 SEO 考虑，由于 SPA 对搜索引擎并不友好，所以选择了 Next.js 来进行服务端多页渲染。使用了之后发现，其实从编码的思维来看，其实还是组件式的单页思想。</p>
+<p>这里想拿出来说说的是在这个项目中，我们开启了 css-module，但在后来的开发过程中需要引入其他组件，却发现样式无法加载出来，这里简单记录一下在解决这个问题的一个过程。</p>
+<p>这里我们以 Tab 组件为例，我们使用的是 rc-tabs，除了需要引入 Tab 组件之外，还需要引入其对应的样式，</p>
+<p>引入 css 文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"rc-tabs/dist/rc-tabs.css"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这时发现引入的样式并没有生效，这是由于开启了 css-module，webpack 会为编译之后的 class 类名加上哈希值，也就意味着，组件对应样式的 class 类名发生了变化，但是组件 DOM 对应的 class 名并不会变化，这就是样式无法正常使用的原因。所以解决方案是，在过 css-module 编译时应该忽略组件自带的样式。找到了问题所在，解决之。</p>
+<p>修改配置文件，next.config.js 的配置如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> withCss = <span class="built_in">require</span>(<span class="string">"@zeit/next-css"</span>);</span><br><span class="line"><span class="keyword">const</span> withLess = <span class="built_in">require</span>(<span class="string">"@zeit/next-less"</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">const</span> cssLoaderGetLocalIdent = <span class="built_in">require</span>(<span class="string">"css-loader/lib/getLocalIdent.js"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = withLess(</span><br><span class="line">  withCss(&#123;</span><br><span class="line">    exportPathMap() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">"/"</span>: &#123; <span class="attr">page</span>: <span class="string">"/"</span> &#125;,</span><br><span class="line">        <span class="string">"/about"</span>: &#123; <span class="attr">page</span>: <span class="string">"/about"</span> &#125;,</span><br><span class="line">        <span class="string">"/article"</span>: &#123; <span class="attr">page</span>: <span class="string">"/article"</span> &#125;,</span><br><span class="line">        <span class="string">"/articleList"</span>: &#123; <span class="attr">page</span>: <span class="string">"/articleList"</span> &#125;,</span><br><span class="line">        <span class="string">"/business"</span>: &#123; <span class="attr">page</span>: <span class="string">"/business"</span> &#125;,</span><br><span class="line">        <span class="string">"/course"</span>: &#123; <span class="attr">page</span>: <span class="string">"/course"</span> &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    cssModules: <span class="literal">true</span>,</span><br><span class="line">    cssLoaderOptions: &#123;</span><br><span class="line">      localIdentName: <span class="string">"[local]___[hash:base64:5]"</span>,</span><br><span class="line">      getLocalIdent: <span class="function">(<span class="params">context, localIdentName, localName, options</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> hz = context.resourcePath.replace(context.rootContext, <span class="string">""</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(hz);</span><br><span class="line">        <span class="keyword">if</span> (<span class="regexp">/node_modules/</span>.test(hz)) &#123;</span><br><span class="line">          <span class="keyword">return</span> localName;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cssLoaderGetLocalIdent(</span><br><span class="line">          context,</span><br><span class="line">          localIdentName,</span><br><span class="line">          localName,</span><br><span class="line">          options</span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    distDir: <span class="string">"./.next"</span>,</span><br><span class="line">    webpack: <span class="function">(<span class="params">config, options</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// Fixes npm packages that depend on `fs` module</span></span><br><span class="line">      config.node = &#123;</span><br><span class="line">        fs: <span class="string">"empty"</span></span><br><span class="line">      &#125;;</span><br><span class="line">      config.resolve.alias[<span class="string">"@"</span>] = path.join(__dirname);</span><br><span class="line">      <span class="keyword">return</span> config;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>主要看这里：其实就是对 CSSLoader 配置了一下，在 getLocalIdent 中忽略了对 node_modules 下的样式的 module 化处理~</p>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/10/29/2018-10-29/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2018/10/29/2018-10-29/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+        <div id="copyright">
+  <ul>
+    <li>
+      &copy;Powered By
+      <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener" style="border-bottom: none;">hexo</a>
+    </li>
+    <li>
+      <a style="border-bottom: none;">何满园的个人博客</a>
+    </li>
+  </ul>
+</div>
+
+    </div>
+</body>
+
+
+
+ 	
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="/images/me.jpg"/>
+	<link rel="shortcut icon" href="/images/me.jpg">
+	
+			    <title>
+    满园的空间
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <meta name="keywords" content="He Manyuan" />
+    
+    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: ' ';
+          position: fixed;
+          top: 0;
+          background: url('/img/bg.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover; 
+        }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+</head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">He Manyuan</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/" rel="nofollow">主页</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://img-blog.csdnimg.cn/20190701180016920.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hlbXlXZWI=,size_16,color_FFFFFF,t_70);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >初探Echarts之美</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <p>随着“云时代”的到来，<strong>大数据（Big Data）</strong>也吸引了越来越多的关注，开发者可以利用网络爬虫将数据抓取到数据库中，再对数据进行智能分析，加以利用产生经济效益。那么问题来了，对于前端开发者来说，该如何直观的将这些数据展示在 Web 界面呢？答案必然是图表。HTML5 赋予了我们强大的 Canvas 功能，正式基于这样的一种背景，Echarts 诞生了，它为我们提供了一种非常不错的大数据可视化解决方案。2018 年 1 月 16 日，百度 EFE 团队正式发布了旗下知名开源产品 ECharts 的最新大版本 4.0，新版本在产品的性能、功能、易用性等各个方面进行了全面提升，标志着百度在数据可视化领域又一突破性里程碑的到来，目前 Echart 在 Github 上的 star 已有 27k+。</p>
+<p>好吧，以上纯属闲话，因为老师说写作文要有“龙头”…</p>
+<p>再来个罗老师式开场：少废话，先看东西…</p>
+<center>
+
+<img alt='img'  style='width: 70%' src='https://img-blog.csdnimg.cn/20190701180016920.png' />
+
+</center>
+
+<p>以上便是一个基于 Echart 图表插件实现的大数据可视化平台界面效果图，怎么样？这样的效果很棒吧？简直就是漂亮的不像实力派，话说转来，这样的方式，使得数据展示非常直观，一目了然。</p>
+<ul>
+<li>安装/下载：<br>通过官网下载文件，并引入——</li>
+</ul>
+<p>值得注意的是这里 Echarts 为我们提供了多个版本可选，根据自己的需求自由选择即可，开发环境建议选择源代码版本，该版本包含了常见的警告和错误提示。</p>
+<center>
+
+<img alt='img' src='https://img-blog.csdnimg.cn/20190701180047164.png' />
+
+</center>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">通过npm 安装 ECharts</span><br><span class="line">npm install echarts –save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用/实例<br>通常情况下直接引入下载好的 echart.js 源文件即可<br>使用 npm 安装会将资源存放在 node_modules 目录下，直接通过 var echarts = require(‘echarts’)导入即可，接下来便可以愉快的在项目中使用 Echarts 啦<del>~</del></li>
+</ul>
+<p>第一步：为 Echarts 准备一个具备大小的 DOM 容器</p>
+<blockquote>
+<p>PS：当你需要结合 Bootstrap 栅格系统进行响应式布局的时候，将这个 DOM 容器的宽度设置为 100%，然后放入相应的栅格即可。另外：当页面尺寸发生变化时，可能会发生图表异常的现象。解决方案是在在页面尺寸发生变化时，触发 Echarts 实例的 resize 事件重新渲染即可，代码如下：window.onresize = function(){myChart.resize();}</p>
+</blockquote>
+<p>第二步：按照官方文档配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">"main"</span>));</span><br><span class="line"><span class="comment">// 显示标题，图例和空的坐标轴</span></span><br><span class="line">myChart.setOption(&#123;</span><br><span class="line">  title: &#123;</span><br><span class="line">    text: <span class="string">"异步数据加载示例"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  tooltip: &#123;&#125;,</span><br><span class="line">  legend: &#123;</span><br><span class="line">    data: [<span class="string">"销量"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  xAxis: &#123;</span><br><span class="line">    data: []</span><br><span class="line">  &#125;,</span><br><span class="line">  yAxis: &#123;&#125;,</span><br><span class="line">  series: [</span><br><span class="line">    &#123;</span><br><span class="line">      name: <span class="string">"销量"</span>,</span><br><span class="line">      type: <span class="string">"bar"</span>,</span><br><span class="line">      data: []</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>第三步：数据填充<br>下面使用人民群众喜闻乐见的 jQuery 来发起异步请求，拿到自己 mock 的数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  type: <span class="string">"post"</span>,</span><br><span class="line">  <span class="keyword">async</span>: <span class="literal">true</span>,</span><br><span class="line">  url: <span class="string">"mock/data.json"</span>, <span class="comment">//mock数据存储的路径</span></span><br><span class="line">  data: &#123;&#125;,</span><br><span class="line">  dataType: <span class="string">"json"</span>, <span class="comment">//返回数据形式为json</span></span><br><span class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//请求成功时执行该函数内容，result即为服务器返回的json对象</span></span><br><span class="line">    <span class="keyword">if</span> (result) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; result.length; i++) &#123;</span><br><span class="line">        names.push(result[i].name); <span class="comment">//挨个取出类别并填入类别数组</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; result.length; i++) &#123;</span><br><span class="line">        nums.push(result[i].num); <span class="comment">//挨个取出销量并填入销量数组</span></span><br><span class="line">      &#125;</span><br><span class="line">      myChart.hideLoading(); <span class="comment">//隐藏加载动画</span></span><br><span class="line">      myChart.setOption(&#123;</span><br><span class="line">        <span class="comment">//加载数据图表</span></span><br><span class="line">        xAxis: &#123;</span><br><span class="line">          data: names</span><br><span class="line">        &#125;,</span><br><span class="line">        series: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="comment">// 根据名字对应到相应的系列</span></span><br><span class="line">            name: <span class="string">"销量"</span>,</span><br><span class="line">            data: nums</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  error: <span class="function"><span class="keyword">function</span>(<span class="params">errorMsg</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//请求失败时执行该函数</span></span><br><span class="line">    alert(<span class="string">"图表请求数据失败!"</span>);</span><br><span class="line">    myChart.hideLoading();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>最终效果：</p>
+<center>
+
+<img alt='img' src='https://img-blog.csdnimg.cn/20190701180333962.png'/>
+
+</center>
+
+<p>通过以上实例我们可以发现，Echarts 就是这样的方便使用，当然了，这只是一个简单的 demo，Echarts 还有更加精彩的地方等待你去发现。</p>
+<ul>
+<li>实现原理及性能探讨</li>
+</ul>
+<p>好吧，这个东西底层究竟是怎么实现的，看了源码，的确读不懂…但可以明确的是它是使用 Canvas 来渲染，官方也提供了 SVG 渲染的方式。浏览器端图表库大多会选择 SVG 或者 Canvas 进行渲染。对于绘制图表来说，这两种技术往往是可替换的，效果相近。但是在一些场景中，他们的表现和能力又有一定差异。于是，对它们的选择取舍，就成为了一个一直存在的不易有标准答案的话题。</p>
+<img alt='img' src='https://img-blog.csdnimg.cn/2019070118033491.png'/>
+
+<p>ECharts 从初始一直使用 Canvas 绘制图表（除了对 IE8- 使用 VML）。而 ECharts v4.0 发布了 SVG 渲染器，从而提供了一种新的选择。只须在初始化一个图表实例时，设置 renderer 参数 为 ‘Canvas’ 或 ‘SVG’ 即可指定渲染器，比较方便。说到这儿，我们来探讨一下 Canvas 和 SVG。Canvas 是使用 JavaScript 程序绘图(动态生成)，SVG 是使用 XML 文档描述来绘图。</p>
+<p>从这点来看：SVG 更适合用来做动态交互，而且 SVG 绘图很容易编辑，只需要增加或移除相应的元素就可以了。同时 SVG 是基于矢量的，所有它能够很好的处理图形大小的改变。Canvas 是基于位图的图像，它不能够改变大小，只能缩放显示；所以说 Canvas 更适合用来实现类似于 Flash 能做的事情(当然现在 Canvas 与 Flash 相比还有一些不够完善的地方)。</p>
+<p>一般来说，Canvas 更适合绘制图形元素数量非常大（这一般是由数据量大导致）的图表（如热力图、地理坐标系或平行坐标系上的大规模线图或散点图等），也利于实现某些视觉 特效。但是，在不少场景中，SVG 具有重要的优势：它的内存占用更低（这对移动端尤其重要）、渲染性能略高、并且用户使用浏览器内置的缩放功能时不会模糊。根据官方测试得出的结论，我们可以发现，在移动端时，SVG 的性能是优于 Canvas 的，但是在有大数据量和复杂交互的情况下 Canvas 的优势也十分明显。</p>
+<p>当然了，当主要矛盾和次要矛盾并存的时候，该选择什么方法论，还得具体问题具体分析。所以到底该如何选择，这是个哲学问题……</p>
+<img alt='img' src='https://img-blog.csdnimg.cn/2019070118033483.png'/>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/12/12/2017-12-12/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2017/12/12/2017-12-12/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+        <div id="copyright">
+  <ul>
+    <li>
+      &copy;Powered By
+      <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener" style="border-bottom: none;">hexo</a>
+    </li>
+    <li>
+      <a style="border-bottom: none;">何满园的个人博客</a>
+    </li>
+  </ul>
+</div>
+
+    </div>
+</body>
+
+
+
+ 	
+</html>

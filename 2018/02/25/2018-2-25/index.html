@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="/images/me.jpg"/>
+	<link rel="shortcut icon" href="/images/me.jpg">
+	
+			    <title>
+    满园的空间
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <meta name="keywords" content="He Manyuan" />
+    
+    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: ' ';
+          position: fixed;
+          top: 0;
+          background: url('/img/bg.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover; 
+        }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+</head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">He Manyuan</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/" rel="nofollow">主页</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://img-blog.csdnimg.cn/201904151137521.png);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >react-cropper组件在项目中的应用（实现先裁剪后上传效果）</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <p>最近公司项目在做一个求职工具类的小程序，小程序端有企业 Logo 的显示，为了保证图片在小程序端的展示效果，所以要求在后台管理系统进行企业 Logo 上传时需要限定上传的图片尺寸和比例。<br>为了减少管理人员的录入成本，需要在 Logo 上传前进行裁剪操作，保证上传进来的图片都是规则的正方形。此处用到了 react-cropper 组件，本文主要介绍了 react-cropper 组件在 Ant Design Pro 项目中的应用。</p>
+<p><strong>为了解决各位看官的时间，先来看最终实现的效果，如果能够帮到你，再往下看~</strong></p>
+<ul>
+<li>点击“选择图片”按钮，弹出窗口，选择文件；</li>
+</ul>
+<center>
+
+<img alt='img'  style='width: 70%' src='https://img-blog.csdnimg.cn/201904151137521.png' />
+
+</center>
+
+<ul>
+<li>图片选择成功后直接打开 Modal，并将选择的图像绑定在 Modal 上（熊猫本熊镇楼）；</li>
+</ul>
+<center>
+
+<img alt='img' src='https://img-blog.csdnimg.cn/20190415113849921.png' />
+
+</center>
+
+<ul>
+<li>裁剪之后点击“确认上传”，上传成功后，关闭 Modal，将图片绑定在表单页面的展示框中，齐活~</li>
+</ul>
+<center>
+
+<img alt='img' src='https://img-blog.csdnimg.cn/2019041511393812.png' />
+
+</center>
+流程就是这么个流程，接下来开撸~ 首先，考虑到后期可能还会在其他位置使用到该组件，并且为了保持原页面的代码整洁，所以考虑将该组件进行二次封装。
+国际惯例的第一步：先安装react-cropper依赖。  
+如果安装之后有问题引入样式有问题，将node_modules目录删除之后重新安装即可。
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-cropper</span><br></pre></td></tr></table></figure>
+
+<p>如果需要进行图片压缩，再安装 lrz 组件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install lrz</span><br></pre></td></tr></table></figure>
+
+<p>由于我们的项目是基于 Ant Design Pro 的，所以直接在 src 目录下的 components 目录下新建一个全局组件，命名为 ImgCropper；</p>
+<center>
+
+<img alt='img' src='https://img-blog.csdnimg.cn/20190415115401696.png' />
+
+</center>
+然后，引入组件，如下图，准备工作完成（此处不再赘述，相信你找到这篇文章时已经做好了这些）
+
+<center>
+
+<img alt='img' src='https://img-blog.csdnimg.cn/20190415115324840.png' />
+
+</center>
+先看render结构  
+<center>
+
+<img alt='img' src='https://img-blog.csdnimg.cn/20190415115324840.png' />
+
+</center>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  <span class="comment">// 考虑靠组件复用，裁剪Modal的标题作为属性从组件外部传递进来</span></span><br><span class="line">  <span class="keyword">const</span> &#123; title &#125; = <span class="keyword">this</span>.props;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * srcCropper：cropper组件内部图片的url</span></span><br><span class="line"><span class="comment">    * visible：裁剪Modal的显示属性</span></span><br><span class="line"><span class="comment">    * confirmLoading：图片上传过程中Modal的Loading效果</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line">  <span class="keyword">const</span> &#123; srcCropper, visible, confirmLoading &#125; = <span class="keyword">this</span>.state;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;Upload beforeUpload=&#123;<span class="keyword">this</span>.beforeUpload&#125; showUploadList=&#123;<span class="literal">false</span>&#125;&gt;</span><br><span class="line">        &lt;Button&gt;</span><br><span class="line">          &lt;Icon type=<span class="string">"upload"</span> /&gt; 选择图片</span><br><span class="line">        &lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>Upload&gt;</span><br><span class="line">      &lt;Modal</span><br><span class="line">        title=&#123;title&#125;</span><br><span class="line">        visible=&#123;visible&#125;</span><br><span class="line">        onOk=&#123;<span class="keyword">this</span>.saveImg&#125;</span><br><span class="line">        onCancel=&#123;<span class="keyword">this</span>.onCloseModal&#125;</span><br><span class="line">        okText=<span class="string">"确认上传"</span></span><br><span class="line">        confirmLoading=&#123;confirmLoading&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;div className=&#123;styles.previewHeader&#125;&gt;</span><br><span class="line">          &#123;srcCropper ? (</span><br><span class="line">            &lt;div className=&#123;styles.previewOutter&#125;&gt;</span><br><span class="line">              &lt;div className=&#123;<span class="string">`<span class="subst">$&#123;styles.uploadCrop&#125;</span> previewContainer`</span>&#125; /&gt;</span><br><span class="line">              &lt;div className=&#123;<span class="string">`<span class="subst">$&#123;styles.uploadCropcir&#125;</span> previewContainer`</span>&#125; /&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">          ) : (</span></span><br><span class="line"><span class="regexp">            ''</span></span><br><span class="line"><span class="regexp">          )&#125;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">        &#123;srcCropper ? (</span><br><span class="line">          &lt;div className=&#123;styles.prevBox&#125;&gt;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">              &lt;Cropper</span><br><span class="line">                ref=<span class="string">"cropper"</span></span><br><span class="line">                style=&#123;&#123; <span class="attr">height</span>: <span class="number">400</span>, <span class="attr">width</span>: <span class="string">'100%'</span> &#125;&#125;</span><br><span class="line">                <span class="comment">// 预览图的容器</span></span><br><span class="line">                preview=<span class="string">".previewContainer"</span></span><br><span class="line">                guides</span><br><span class="line">                <span class="comment">// 固定图片裁剪比例（正方形）</span></span><br><span class="line">                aspectRatio=&#123;<span class="number">1</span>&#125;</span><br><span class="line">                <span class="comment">// 要裁剪的图片的路径</span></span><br><span class="line">                src=&#123;srcCropper&#125;</span><br><span class="line">              /&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">          &lt;/</span>div&gt;</span><br><span class="line">        ) : (</span><br><span class="line">          <span class="string">''</span></span><br><span class="line">        )&#125;</span><br><span class="line">      &lt;<span class="regexp">/Modal&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此处使用的 Antd 内置的上传组件 Upload（根据从 Antd 文档，实现先选择文件，再上传）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">beforeUpload = <span class="function"><span class="params">file</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> isLt10M = file.size / <span class="number">1024</span> / <span class="number">1024</span> &lt; <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">if</span> (!isLt10M) &#123;</span><br><span class="line">    <span class="comment">// 添加文件限制</span></span><br><span class="line">    message.error(&#123; <span class="attr">content</span>: <span class="string">"文件大小不能超过10M"</span> &#125;);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">  reader.readAsDataURL(file); <span class="comment">// 开始读取文件</span></span><br><span class="line">  <span class="comment">// 因为读取文件需要时间,所以要在回调函数中使用读取的结果</span></span><br><span class="line">  reader.onload = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      visible: <span class="literal">true</span>,</span><br><span class="line">      srcCropper: e.target.result <span class="comment">// cropper的图片路径</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>点击 Modal 的“确认上传”按钮，开始上传：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">saveImg = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">    confirmLoading: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">// 通过refs读取到Cropper实例，并读取到裁剪之后的图片（base64）</span></span><br><span class="line">  <span class="keyword">const</span> url = <span class="keyword">this</span>.refs.cropper.getCroppedCanvas().toDataURL();</span><br><span class="line">  <span class="comment">// 此处使用了lrz组件对裁剪之后的图片进行压缩，lrz的API十分简单，quality是指对压缩图片的品质，一般0.6或者0.7即可</span></span><br><span class="line">  lrz(url, &#123; <span class="attr">quality</span>: <span class="number">0.6</span> &#125;).then(<span class="function"><span class="params">results</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; onSuccess &#125; = <span class="keyword">this</span>.props;</span><br><span class="line">    <span class="keyword">const</span> fd = <span class="keyword">new</span> FormData();</span><br><span class="line">    <span class="comment">// 由于后台接口参数需要一个文件名，所有根据当前时间生成文件名</span></span><br><span class="line">    <span class="keyword">const</span> imgName = <span class="string">`<span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>().getTime()&#125;</span>.png`</span>;</span><br><span class="line">    <span class="comment">// 将base64转化成二进制流</span></span><br><span class="line">    fd.append(<span class="string">"file"</span>, b64toBlob(results.base64), imgName);</span><br><span class="line">    <span class="comment">// 此处的function参数时候后台规定的，具体需要根据接口情况而定</span></span><br><span class="line">    fd.append(<span class="string">"function"</span>, <span class="string">"rims/post/companyLogo/"</span>);</span><br><span class="line">    <span class="comment">// 发送请求</span></span><br><span class="line">    upload(fd).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (res &amp;&amp; res.code === <span class="number">1000</span>) &#123;</span><br><span class="line">        <span class="comment">// 	将返回数据传递到页面上去</span></span><br><span class="line">        onSuccess(res.data);</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">          visible: <span class="literal">false</span>,</span><br><span class="line">          confirmLoading: <span class="literal">false</span></span><br><span class="line">        &#125;);</span><br><span class="line">        message.success(<span class="string">"上传成功！"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上传成功之后，将返回结果传递到组件外部去（用于页面展示）。<br>具体方法是，通过暴露一个外部的 onSuccess 属性，该属性是一个函数，并调用该函数传递数据。</p>
+<p>上面的代码中，使用到了自己封装的工具方法 b64toBlob 和 upload，具体代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">utils.js;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> b64toBlob = <span class="function"><span class="params">ImageURL</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> block = ImageURL.split(<span class="string">";"</span>);</span><br><span class="line">  <span class="keyword">const</span> contentType = block[<span class="number">0</span>].split(<span class="string">":"</span>)[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">const</span> b64Data = block[<span class="number">1</span>].split(<span class="string">","</span>)[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">const</span> sliceSize = <span class="number">512</span>;</span><br><span class="line">  <span class="keyword">const</span> byteCharacters = atob(b64Data);</span><br><span class="line">  <span class="keyword">const</span> byteArrays = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> offset = <span class="number">0</span>; offset &lt; byteCharacters.length; offset += sliceSize) &#123;</span><br><span class="line">    <span class="keyword">const</span> slice = byteCharacters.slice(offset, offset + sliceSize);</span><br><span class="line">    <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="built_in">Array</span>(slice.length);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; slice.length; i++) &#123;</span><br><span class="line">      byteNumbers[i] = slice.charCodeAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(byteNumbers);</span><br><span class="line">    byteArrays.push(byteArray);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> blob = <span class="keyword">new</span> Blob(byteArrays, &#123; <span class="attr">type</span>: contentType &#125;);</span><br><span class="line">  <span class="keyword">return</span> blob;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">common.js;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; post &#125; <span class="keyword">from</span> <span class="string">"@/utils/http"</span>;</span><br><span class="line"><span class="keyword">import</span> prefix <span class="keyword">from</span> <span class="string">"@/locales/prefix"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> upLoadUrl = <span class="string">`<span class="subst">$&#123;prefix.RIMS&#125;</span>/file/upload`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">upload</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> post(<span class="string">`<span class="subst">$&#123;upLoadUrl&#125;</span>`</span>, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>到这里，组件内部的逻辑处理完毕，<br>接下来便可以在页面中需要的位置调用组件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">组件调用示例：</span><br><span class="line"><span class="comment">// 需要传递两个属性：title和onSuccess，</span></span><br><span class="line">&lt;ImgCropper title=<span class="string">"上传企业Logo"</span> onSuccess=&#123;<span class="keyword">this</span>.onImgUpLoadChange&#125; /&gt;</span><br><span class="line">onImgUpLoadChange = <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(data);</span><br><span class="line">	<span class="comment">// 这里便可以读取到图片上传成功之后的返回值，一般后端接口会返回上传成功之后在服务器存储的url等信息，然后根据业务逻辑进行其他操作即可</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>希望能够帮到你… ^<em>^ O(∩</em>∩)O ~</strong></p>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/02/25/2018-2-25/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2018/02/25/2018-2-25/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+        <div id="copyright">
+  <ul>
+    <li>
+      &copy;Powered By
+      <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener" style="border-bottom: none;">hexo</a>
+    </li>
+    <li>
+      <a style="border-bottom: none;">何满园的个人博客</a>
+    </li>
+  </ul>
+</div>
+
+    </div>
+</body>
+
+
+
+ 	
+</html>

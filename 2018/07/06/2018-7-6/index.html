@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="/images/me.jpg"/>
+	<link rel="shortcut icon" href="/images/me.jpg">
+	
+			    <title>
+    满园的空间
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <meta name="keywords" content="He Manyuan" />
+    
+    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: ' ';
+          position: fixed;
+          top: 0;
+          background: url('/img/bg.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover; 
+        }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+</head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">He Manyuan</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/" rel="nofollow">主页</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://ftp.bmp.ovh/imgs/2019/11/32e41eaa13b87b0d.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >菜鸟学习笔记之React-Quill富文本编辑器</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <p>React-Quill 是 Antd 推荐使用的富文本编辑器，此文记录一下最近在项目中使用它遇到的一些问题。</p>
+<p>首先，大家在百度相关资料时，应当搜索 React-Quill，而不是 Quill。</p>
+<p>github 点这里：<a href="https://github.com/zenoamaro/react-quill" target="_blank" rel="noopener">https://github.com/zenoamaro/react-quill</a></p>
+<p>安装依赖这些就都不说了，只记录干货….</p>
+<p>调用示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ReactQuill</span><br><span class="line">  theme=<span class="string">"snow"</span></span><br><span class="line">  value=&#123;content || <span class="string">""</span>&#125;</span><br><span class="line">  onChange=&#123;onChange&#125;</span><br><span class="line">  modules=&#123;modules&#125;</span><br><span class="line">  formats=&#123;formats&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这里需要注意的是，toolbar 的配置需要和 formats 属性想匹配，此处我是直接在组件外声明了一个全名变量：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> formats = [</span><br><span class="line">  <span class="string">"header"</span>,</span><br><span class="line">  <span class="string">"bold"</span>,</span><br><span class="line">  <span class="string">"italic"</span>,</span><br><span class="line">  <span class="string">"underline"</span>,</span><br><span class="line">  <span class="string">"strike"</span>,</span><br><span class="line">  <span class="string">"blockquote"</span>,</span><br><span class="line">  <span class="string">"list"</span>,</span><br><span class="line">  <span class="string">"bullet"</span>,</span><br><span class="line">  <span class="string">"indent"</span>,</span><br><span class="line">  <span class="string">"link"</span>,</span><br><span class="line">  <span class="string">"image"</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>特别说明的一点是：由于 React-Quill 默认是将图片转换成 base64 的。但是由于一般情况想生成出来的 base64 字符串会特别长，所以这个地方我们采用的方式时先将图片上传到服务端，然后用上传成功之后返回的 url 来替换掉图片的 base64。Qeact-Quill 提供了 handlers 属性来对图片进行单独处理，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">imageHandler</span>(<span class="params">action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> input = <span class="built_in">document</span>.createElement(<span class="string">"input"</span>);</span><br><span class="line">  input.setAttribute(<span class="string">"type"</span>, <span class="string">"file"</span>);</span><br><span class="line">  input.setAttribute(<span class="string">"accept"</span>, <span class="string">"image/*"</span>);</span><br><span class="line">  input.click();</span><br><span class="line">  input.onchange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> file = input.files[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">const</span> fd = <span class="keyword">new</span> FormData();</span><br><span class="line">    fd.append(<span class="string">"file"</span>, file);</span><br><span class="line">    <span class="keyword">const</span> hide = message.loading(<span class="string">"上传中..."</span>, <span class="number">0</span>);</span><br><span class="line">    upload(action, fd).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (res) &#123;</span><br><span class="line">        <span class="keyword">const</span> range = <span class="keyword">this</span>.quill.getSelection();</span><br><span class="line">        <span class="keyword">this</span>.quill.insertEmbed(range.index, <span class="string">"image"</span>, res.url);</span><br><span class="line">        hide();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简述一下，大概方法就是利用 Input File 来上传图片的~这里的 upload 方法是我们自己封装的图片上传方法。最重要的一步是，需要在上传成功后的回调里对进行替换图片 src 的操作。首先通过 this.quill 拿到 Quill 实例，注意这里有一个大坑，在使用过程中始终拿不到这个 Quill 实例，后来发现需要将此处的 this 指向配置对象。所以此处的 imageHandler 函数是一个组件外的全局函数。</p>
+<p>通过这件事情，发现 JavaScript 的 this 指向真是一个很重要的东西呀<del>刚开始其实是知道应该就是 this 指向的问题，但是尝试各种方法之后无法解决。后在我司前端主程大大的指点下解决了</del>手动比心心~</p>
+<p>在这个过程中 onChange 函数需要将编辑器的值传递出来并在函数体中将值绑定到具体的字段上，这样就可以将该参数按照与后端约定好的方式发送过去即可。</p>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/07/06/2018-7-6/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2018/07/06/2018-7-6/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+        <div id="copyright">
+  <ul>
+    <li>
+      &copy;Powered By
+      <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener" style="border-bottom: none;">hexo</a>
+    </li>
+    <li>
+      <a style="border-bottom: none;">何满园的个人博客</a>
+    </li>
+  </ul>
+</div>
+
+    </div>
+</body>
+
+
+
+ 	
+</html>
